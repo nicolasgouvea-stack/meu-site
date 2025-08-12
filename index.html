@@ -1,0 +1,152 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clínica Veterinária FuturoVet</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">FV</div>
+      <div class="title"><span>Futuro</span>Vet</div>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn" data-target="services">Serviços</button>
+      <button class="nav-btn" data-target="team">Equipe</button>
+      <button class="nav-btn" data-target="contact">Contato</button>
+      <button id="bookBtn" class="cta">Agende</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Cuidados avançados para seu melhor amigo</h1>
+        <p>Tecnologia, carinho e medicina personalizada em um ambiente futurista e acolhedor.</p>
+        <div class="hero-actions">
+          <button id="tourBtn" class="btn">Fazer tour</button>
+          <button id="callBtn" class="btn ghost">Ligar agora</button>
+        </div>
+      </div>
+      <div class="hero-image" aria-hidden="true"></div>
+    </section>
+
+    <section id="services" class="section cards">
+      <h2>Serviços</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Consulta Avançada</h3>
+          <p>Exames digitais, diagnóstico por imagem e plano de tratamento personalizado.</p>
+          <button class="card-btn" onclick="openDetails('det-1')">Mais</button>
+          <div class="card-details" id="det-1">
+            <ul>
+              <li>Check-up completo</li>
+              <li>Exames laboratoriais</li>
+              <li>Teleconsulta de acompanhamento</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Cirurgia e Internação</h3>
+          <p>Salas cirúrgicas com monitoramento e UTI para recuperação segura.</p>
+          <button class="card-btn" onclick="openDetails('det-2')">Mais</button>
+          <div class="card-details" id="det-2">
+            <ul>
+              <li>Cirurgias de rotina e complexas</li>
+              <li>Cuidados pós-operatórios</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Estética & Bem-estar</h3>
+          <p>Banho, tosa e terapia de relaxamento para melhorar a qualidade de vida.</p>
+          <button class="card-btn" onclick="openDetails('det-3')">Mais</button>
+          <div class="card-details" id="det-3">
+            <ul>
+              <li>Tosa personalizada</li>
+              <li>Hidroterapia</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="team" class="section team">
+      <h2>Equipe</h2>
+      <div class="team-grid">
+        <div class="person">
+          <img src="https://images.unsplash.com/photo-1558980394-0c7b1f4a2c95?auto=format&fit=crop&w=400&q=60" alt="Dra. Marina - Veterinária">
+          <h4>Dra. Marina</h4>
+          <p>CRMV 12345 - Medicina interna e cirurgia.</p>
+        </div>
+        <div class="person">
+          <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=400&q=60" alt="Dr. Lucas - Anestesia">
+          <h4>Dr. Lucas</h4>
+          <p>CRMV 67890 - Anestesiologia e cuidado intensivo.</p>
+        </div>
+        <div class="person">
+          <img src="https://images.unsplash.com/photo-1500916434205-2a3e6a5161b4?auto=format&fit=crop&w=400&q=60" alt="Equipe de Enfermagem">
+          <h4>Equipe</h4>
+          <p>Enfermeiros e técnicos especializados em pets.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2>Contato</h2>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <p><strong>Endereço:</strong> Av. Exemplo, 123 - Cidade</p>
+          <p><strong>Telefone:</strong> (11) 99999-9999</p>
+          <p><strong>Email:</strong> contato@futurovet.com.br</p>
+        </div>
+        <form id="contactForm" class="contact-form" onsubmit="submitForm(event)">
+          <label>Nome<input type="text" name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Telefone<input type="tel" name="phone"></label>
+          <label>Mensagem<textarea name="message" rows="4" required></textarea></label>
+          <div class="form-actions">
+            <button type="submit" class="btn">Enviar</button>
+            <button type="button" class="btn ghost" onclick="fillSample()">Exemplo</button>
+          </div>
+          <p class="note">*Este formulário é demo; funciona localmente e mostra a mensagem de sucesso.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© FuturoVet — Clínica Veterinária</div>
+    <div class="socials">
+      <button onclick="openLink('https://instagram.com')">Instagram</button>
+      <button onclick="openLink('https://facebook.com')">Facebook</button>
+    </div>
+  </footer>
+
+  <!-- Modal de agendamento -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-panel">
+      <button class="close" onclick="closeModal()">✕</button>
+      <h3>Agendar Consulta</h3>
+      <form id="bookForm" onsubmit="submitBooking(event)">
+        <label>Nome<input name="bname" required></label>
+        <label>Telefone<input name="bphone" required></label>
+        <label>Data<input type="date" name="bdate" required></label>
+        <label>Hora<input type="time" name="btime" required></label>
+        <div class="form-actions">
+          <button class="btn" type="submit">Confirmar</button>
+          <button type="button" class="btn ghost" onclick="closeModal()">Cancelar</button>
+        </div>
+      </form>
+      <div id="bookingResult" class="booking-result" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
